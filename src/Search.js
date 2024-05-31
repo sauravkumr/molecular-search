@@ -1,21 +1,13 @@
 // src/Search.js
 import React, { useState } from 'react';
 
-const Search = ({ onSearch }) => {
+const Search = ({ onSearch, results }) => {
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (onSearch) {
-      const dummyResults = [
-        { id: 1, name: 'Molecule 1', description: 'Description for Molecule 1' },
-        { id: 2, name: 'Molecule 2', description: 'Description for Molecule 2' },
-        { id: 3, name: 'Molecule 3', description: 'Description for Molecule 3' },
-      ];
-      setResults(dummyResults);
-      onSearch(query);
-    }
+    let matches = onSearch(query);
+    console.log("YOOO", results);
   };
 
   return (
@@ -46,8 +38,8 @@ const Search = ({ onSearch }) => {
               {results.map(result => (
                 <li key={result.id} className="mb-2">
                   <div className="p-2 border rounded bg-white shadow">
-                    <h4 className="font-bold">{result.name}</h4>
-                    <p>{result.description}</p>
+                    <h4 className="font-bold">{result.id}</h4>
+                    <p>Score: {result.score}</p>
                   </div>
                 </li>
               ))}
