@@ -36,15 +36,6 @@ const App = () => {
         throw new Error("Expected 'matches' to be an array");
       }
       setResults(matches);
-      const nodes = matches.map((result, index) => ({
-        id: result.id,
-        group: index % 2 === 0 ? 1 : 2,
-      }));
-      const links = matches.map((result, index) => ({
-        source: 'query',
-        target: result.id,
-        value: 1,
-      }));
 
       return matches;
     } catch (error) {
