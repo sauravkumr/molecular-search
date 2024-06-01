@@ -46,7 +46,6 @@ const App = () => {
         value: 1,
       }));
 
-      setGraphData({ nodes: [{ id: 'query', group: 3 }, ...nodes], links });
       return matches;
     } catch (error) {
       console.error('Error fetching search results:', error);
