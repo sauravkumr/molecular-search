@@ -1,8 +1,9 @@
 // src/App.js
 import React, { useState } from 'react';
 import axios from 'axios';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Search from './Search';
-import Canvas from './Canvas';
+import About from './About';
 
 const App = () => {
   const [graphData, setGraphData] = useState({ nodes: [], links: [] });
@@ -47,21 +48,37 @@ const App = () => {
       }));
 
       setGraphData({ nodes: [{ id: 'query', group: 3 }, ...nodes], links });
-      return matches
+      return matches;
     } catch (error) {
       console.error('Error fetching search results:', error);
     }
   };
 
   return (
-    <div className="flex">
-      <div className="w-1/3">
-        <Search onSearch={handleSearch} results={results} />
+    <Router>
+      <div>
+        <nav className="bg-gray-800 p-4">
+          <ul className="flex space-x-4">
+            <li>
+              <Link to="/" className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Search</Link>
+            </li>
+            <li>
+              <Link to="/graph" className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Graph</Link>
+            </li>
+            <li>
+              <Link to="/about" className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">About</Link>
+            </li>
+          </ul>
+        </nav>
+
+
+        <Routes>
+          <Route path="/about" element={<About />} />
+          <Route path="/" element={<Search onSearch={handleSearch} results={results} />} />
+          <Route path="/graph" element={<iframe src="https://atlas.nomic.ai/data/epicsaurav/curious-hamilton/map" title="Wikipedia" className="w-full h-screen border-0" />} />
+        </Routes>
       </div>
-      <div className="w-2/3">
-        <Canvas graphData={graphData} />
-      </div>
-    </div>
+    </Router>
   );
 };
 
