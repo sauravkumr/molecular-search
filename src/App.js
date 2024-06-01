@@ -6,7 +6,6 @@ import Search from './Search';
 import About from './About';
 
 const App = () => {
-  const [graphData, setGraphData] = useState({ nodes: [], links: [] });
   const [results, setResults] = useState([]);
 
   const handleSearch = async (query) => {
