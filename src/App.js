@@ -20,7 +20,7 @@ const App = () => {
       console.log(response1);
 
       // POST request for search
-      const response = await axios.post('http://127.0.0.1:5000/search', { query: query }, {
+      const response = await axios.post('/api/search', { query: query }, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -64,7 +64,7 @@ const App = () => {
         <Routes>
           <Route path="/about" element={<About />} />
           <Route path="/" element={<Search onSearch={handleSearch} results={results} />} />
-          <Route path="/graph" element={<iframe src="https://atlas.nomic.ai/data/epicsaurav/curious-hamilton/map" title="Wikipedia" className="w-full h-screen border-0" />} />
+          <Route path="/graph" element={<iframe src="https://atlas.nomic.ai/data/epicsaurav/curious-hamilton/map/f70b915b-a910-40f5-b560-0a477e527e97" title="Wikipedia" className="w-full h-screen border-0" />} />
         </Routes>
       </div>
     </Router>

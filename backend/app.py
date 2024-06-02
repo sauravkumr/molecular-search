@@ -24,7 +24,7 @@ def search():
     query_vec = vectorize(query)
     matches = index.query(
         vector=query_vec.tolist(),
-        top_k=3,
+        top_k=10,
     )
     results = [{
         "id": match["id"],
