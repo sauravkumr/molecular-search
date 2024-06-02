@@ -1,13 +1,7 @@
 from flask import Flask, request, jsonify
-import numpy as np
 from sentence_transformers import SentenceTransformer
 from pinecone import Pinecone
 from flask_cors import CORS, cross_origin
-import json
-import requests
-import pickle as pkl
-import pandas as pd
-import os
 from supabase import create_client, Client
 
 url: str = "https://rlzfclzpdwwdledpqrur.supabase.co"
