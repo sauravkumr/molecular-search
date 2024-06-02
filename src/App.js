@@ -12,19 +12,20 @@ const App = () => {
     console.log('Search query:', query);
     try {
       // First GET request
-      const response1 = await axios.get('http://127.0.0.1:5000/notsearch', {
+      const response1 = await axios.get('https://molecular-search.fly.dev/notsearch', {
         headers: {
           'Content-Type': 'application/json'
         }
       });
-      console.log(response1);
-
-      // POST request for search
-      const response = await axios.post('/api/search', { query: query }, {
+      console.log('GET /api/notsearch response:', response1.data);
+  
+      const response = await axios.post('https://molecular-search.fly.dev/search', { query: query }, {
         headers: {
           'Content-Type': 'application/json'
         }
       });
+      console.log('POST /api/search response:', response.data);
+  
 
       console.log(response.data);
 
