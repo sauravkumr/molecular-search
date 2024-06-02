@@ -12,14 +12,14 @@ const App = () => {
     console.log('Search query:', query);
     try {
       // First GET request
-      const response1 = await axios.get('https://molecular-search.fly.dev/notsearch', {
+      const response1 = await axios.get('http://127.0.0.1:5000/notsearch', {
         headers: {
           'Content-Type': 'application/json'
         }
       });
       console.log('GET /api/notsearch response:', response1.data);
   
-      const response = await axios.post('https://molecular-search.fly.dev/search', { query: query }, {
+      const response = await axios.post('http://127.0.0.1:5000/search', { query: query }, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -30,7 +30,7 @@ const App = () => {
       console.log(response.data);
 
       // Parse response and update results
-      const matches = response.data;  // Handle different response structures
+      const matches = response.data.matches;  // Handle different response structures
 
       // Check if matches is an array
       if (!Array.isArray(matches)) {
