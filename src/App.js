@@ -12,14 +12,14 @@ const App = () => {
     console.log('Search query:', query);
     try {
       // First GET request
-      const response1 = await axios.get('http://127.0.0.1:5000/notsearch', {
+      const response1 = await axios.get('https://molecular-backend.onrender.com/notsearch', {
         headers: {
           'Content-Type': 'application/json'
         }
       });
       console.log('GET /api/notsearch response:', response1.data);
   
-      const response = await axios.post('http://127.0.0.1:5000/search', { query: query }, {
+      const response = await axios.post('https://molecular-backend.onrender.com/search', { query: query }, {
         headers: {
           'Content-Type': 'application/json'
         }
