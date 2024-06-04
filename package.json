@@ -1,5 +1,6 @@
 {
-  "name": "molecular-transformer-search",
+  "homepage": ".",
+  "name": "molecular-search",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
