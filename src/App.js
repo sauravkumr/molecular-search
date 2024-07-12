@@ -11,21 +11,11 @@ const App = () => {
   const handleSearch = async (query) => {
     console.log('Search query:', query);
     try {
-      // First GET request
-      const response1 = await axios.get('https://molecular-backend.onrender.com/notsearch', {
+      const response = await axios.post('http://127.0.0.1:5000/search', { query: query }, {
         headers: {
           'Content-Type': 'application/json'
         }
       });
-      console.log('GET /api/notsearch response:', response1.data);
-  
-      const response = await axios.post('https://molecular-backend.onrender.com/search', { query: query }, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      console.log('POST /api/search response:', response.data);
-  
 
       console.log(response.data);
 
